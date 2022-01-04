@@ -9,7 +9,7 @@ import com.noorteck.qa.utils.CommonUI;
 public class TransferPage extends CommonUI {
 
 	
-	@FindBy(xpath="//body/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-transfers[1]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/mat-card-content[1]/form[1]/mat-form-field[1]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[2]/div[1]")
+	@FindBy(xpath="(//div[@class='mat-select-arrow-wrapper'])[1]")
 	WebElement originalAccountDropdown;
 	
 	@FindBy(id="mat-option-2")
@@ -21,10 +21,10 @@ public class TransferPage extends CommonUI {
 	@FindBy(id="mat-option-4")
 	WebElement retirementOption;
 	
-	@FindBy(id="mat-option-5")
+	@FindBy(xpath="(//mat-option[@id='mat-option-5'])[1]")
 	WebElement rainyDayOption;
 	
-	@FindBy(xpath="//body/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-transfers[1]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/mat-card-content[1]/form[1]/mat-form-field[2]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[1]")
+	@FindBy(xpath="(//div[@class='mat-select-arrow-wrapper'])[2]")
 	WebElement destinationAccoutDropdown;
 	
 	@FindBy(id="mat-option-6")
@@ -39,7 +39,7 @@ public class TransferPage extends CommonUI {
 	@FindBy(id="mat-option-9")
 	WebElement rainyDayDesOption;
 	
-	@FindBy(className= "mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored")
+	@FindBy(id="mat-input-0")
 	WebElement amountField;
 	
 	@FindBy(id="mat-input-1")
@@ -48,39 +48,50 @@ public class TransferPage extends CommonUI {
 	@FindBy(id="mat-input-2")
 	WebElement atmPinField;
 	
-	@FindBy(xpath="//button[@class='v24DomSyncDenyAgent mat-raised-button mat-primary']")
+	@FindBy(xpath="//button[@type='button']")
 	WebElement transferFundsButton;
 	
-	public void transferPage() {
+	@FindBy(xpath="//mat-card-title[@class='mat-card-title']")
+	WebElement textMessage;
+	
+	public TransferPage() {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void clickPersonal() {
-		click(personalOption);
+	public void clickOriginalAccount() {
+		click(originalAccountDropdown);
 	}
 	
-	public void clickInvesting() {
-		click(investingOption);
+	
+	public void selectPersonal() {
+		moveToElementAndClick( personalOption);
 	}
 	
-	public void clickRetirement() {
-		click(retirementOption);
+	public void selectInvesting() {
+		moveToElementAndClick(investingOption);
 	}
 	
-	public void clickRainyDay() {
-		click(rainyDayOption);
+	public void selectRetirement() {
+		moveToElementAndClick(retirementOption);
 	}
 	
-	public void clickPersonalDesAcc() {
-		click(personalDesOption);
+	public void selectRainyDay() {
+		moveToElementAndClick(rainyDayOption);
 	}
 	
-	public void clickInvestingDesAcc() {
-		click(investingDesOption);
+	public void clickDesAccout() {
+		click(destinationAccoutDropdown);
+	}
+	public void selectPersonalDesAcc() {
+		moveToElementAndClick(personalDesOption);
 	}
 	
-	public void clickRetirementDesAcc() {
-		click(retirementDesOption);
+	public void selectInvestingDesAcc() {
+		moveToElementAndClick(investingDesOption);
+	}
+	
+	public void selectRetirementDesAcc() {
+		moveToElementAndClick(retirementDesOption);
 	}
 	
 	public void clickRainyDayDesAcc() {
@@ -101,6 +112,11 @@ public class TransferPage extends CommonUI {
 	
 	public void clickTransferFunds() {
 		click(transferFundsButton);
+	}
+	
+	public String displayedText() {
+		return getText(textMessage);
+		
 	}
 	
 }

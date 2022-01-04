@@ -35,38 +35,36 @@ public class LoanPage extends CommonUI {
 	@FindBy(xpath="//body/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-loans[1]/div[1]/div[2]/mat-horizontal-stepper[1]/div[2]/div[1]/form[1]/div[1]/button[1]")
 	WebElement nextButton;
 	
-	@FindBy(id="mat-input-9")
+	@FindBy(id="mat-input-6")
 	WebElement amountField;
 	
-	@FindBy(id="mat-input-10")
+	@FindBy(id="mat-input-7")
 	WebElement mothersNameField;
 	
 	
-	@FindBy(id="mat-input-11")
+	@FindBy(id="mat-input-8")
 	WebElement ssnField;
 	
-	@FindBy(css="mat-sidenav-container.all-wrap.mat-drawer-container.mat-sidenav-container mat-sidenav-content.mat-drawer-content.mat-sidenav-content:nth-child(5) app-loans.ng-star-inserted:nth-child(2) div.content:nth-child(2) div.container:nth-child(2) mat-horizontal-stepper.mat-stepper-horizontal.ng-tns-c11-10 div.mat-horizontal-content-container div.mat-horizontal-stepper-content.ng-trigger.ng-trigger-stepTransition.ng-tns-c11-10.ng-star-inserted:nth-child(2) form.ng-untouched.ng-pristine.ng-invalid.ng-star-inserted div:nth-child(6) > button.mat-button:nth-child(1)")
+	@FindBy(xpath="(//button[@type='button'])[1]")
 	WebElement backButton;
 	
-	@FindBy(css="mat-sidenav-container.all-wrap.mat-drawer-container.mat-sidenav-container mat-sidenav-content.mat-drawer-content.mat-sidenav-content:nth-child(5) app-loans.ng-star-inserted:nth-child(2) div.content:nth-child(2) div.container:nth-child(2) mat-horizontal-stepper.mat-stepper-horizontal.ng-tns-c11-10 div.mat-horizontal-content-container div.mat-horizontal-stepper-content.ng-trigger.ng-trigger-stepTransition.ng-tns-c11-10.ng-star-inserted:nth-child(2) form.ng-untouched.ng-pristine.ng-invalid.ng-star-inserted div:nth-child(6) > button.mat-button:nth-child(2)")
+	@FindBy(xpath="(//button[@type='submit'])[2]")
 	WebElement next;
 	
-	@FindBy(className="//button[@class='v24DomSyncDenyAgent mat-raised-button mat-primary']")
+	@FindBy(css=".v24DomSyncDenyAgent.mat-raised-button.mat-primary")
 	WebElement confirmButton;
 	
-	@FindBy(css="mat-sidenav-container.all-wrap.mat-drawer-container.mat-sidenav-container mat-sidenav-content.mat-drawer-content.mat-sidenav-content:nth-child(5) app-loans.ng-star-inserted:nth-child(2) div.content:nth-child(2) div.container:nth-child(2) mat-horizontal-stepper.mat-stepper-horizontal.ng-tns-c11-10 div.mat-horizontal-content-container div.mat-horizontal-stepper-content.ng-trigger.ng-trigger-stepTransition.ng-tns-c11-10.ng-star-inserted:nth-child(3) div.ng-star-inserted:nth-child(2) > button.mat-button:nth-child(2)")
+	@FindBy(xpath="(//button[@type='button'])[3]")
 	WebElement back;
 	
-	@FindBy(css="mat-sidenav-container.all-wrap.mat-drawer-container.mat-sidenav-container mat-sidenav-content.mat-drawer-content.mat-sidenav-content:nth-child(5) app-loans.ng-star-inserted:nth-child(2) div.content:nth-child(2) div.container:nth-child(2) mat-horizontal-stepper.mat-stepper-horizontal.ng-tns-c11-10 div.mat-horizontal-content-container div.mat-horizontal-stepper-content.ng-trigger.ng-trigger-stepTransition.ng-tns-c11-10.ng-star-inserted:nth-child(3) div.ng-star-inserted:nth-child(2) > button.mat-button:nth-child(3)")
+	@FindBy(xpath="(//button[@class='mat-button'])[5]")
 	WebElement resetButton;
 	
-	@FindBy(css="mat-sidenav-container.all-wrap.mat-drawer-container.mat-sidenav-container mat-sidenav-content.mat-drawer-content.mat-sidenav-content:nth-child(5) app-loan-success.ng-star-inserted:nth-child(2) div.container:nth-child(2) div.container div.content mat-card.card.mat-card > mat-card-title.mat-card-title")
+	@FindBy(xpath="//mat-card-title[@class='mat-card-title']")
 	WebElement textTitle;
 	
 	
-	
-	
-	public void loanPage() {
+	public LoanPage() {
 
 		PageFactory.initElements(driver, this);
 		}
@@ -84,19 +82,19 @@ public class LoanPage extends CommonUI {
 	}
 	
 	public void clickPersonal() {
-		click(personalOption);
+		moveToElementAndClick(personalOption);
 	}
 	
 	public void clickInvesting() {
-		click(investingOption);
+		moveToElementAndClick(investingOption);
 	}
 	
 	public void clickRetirement() {
-		click(retirementOption);
+		moveToElementAndClick(retirementOption);
 	}
 	
 	public void clickRainyDay() {
-		click(rainyDayOption);
+		moveToElementAndClick(rainyDayOption);
 	}
 	
 	public void enterYearsField(String year) {

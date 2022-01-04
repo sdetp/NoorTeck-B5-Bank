@@ -1,48 +1,50 @@
 package com.noorteck.qa.test;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.noorteck.qa.utils.CommonUI;
 import com.noorteck.qa.utils.ObjInitialize;
 
 public class BankTest extends ObjInitialize {
 
 	public static void main(String[] args) {
-		
-		String url = "https://usdemo.vee24.com/#/transactions";
-	
-		CommonUI commonUIObj = new CommonUI();
-		
-		commonUIObj.openBrowser("chrome");
-		commonUIObj.navigate(url);
-		
-		ObjInitialize initializeObj = new ObjInitialize();
-		initializeObj.initializeClassObj();
-		BankTest obj = new BankTest();
-		
-		
+String url = "https://usdemo.vee24.com/#/transactions";
 	
 		
-		obj.bankTestOne();
+		CommonUI.openBrowser("chrome");
+		CommonUI.navigate(url);
 		
-		commonUIObj.quitBrowser();
+		
+		initializeClassObj();
+		
+		bankTestOne();
+		bankTestTwo();
+		
+		CommonUI.quitBrowser();
 	}
 	
-	public void bankTestOne() {
-		
+	public static void bankTestOne()  {
 		homeObj.clickTransfer();
-		transferObj.clickRainyDay();
-		transferObj.clickInvestingDesAcc();
-		transferObj.enterAmount("50000");
-		transferObj.enterSSN("123435677");
+		transferObj.clickOriginalAccount();
+		transferObj.selectRainyDay();
+	    
+	    transferObj.clickDesAccout();
+		transferObj.selectInvestingDesAcc();
+		transferObj.enterAmount("1000");
+		transferObj.enterSSN("12345677");
 		transferObj.enterPin("1235");
 		transferObj.clickTransferFunds();
-		transferTwoObj.displayedText();
-		if((transferTwoObj.displayedText()).contains("Success! Funds successfully transferred.")) {
-			System.out.println("verified");
+	    System.out.println(transferObj.displayedText());
+		
 		}
 		
-	}
 	
-	public void bankTestTwo() {
+	
+	public static void bankTestTwo() {
 		homeObj.clickLoan();
 		loanObj.enterName("John Cene");
 		loanObj.enterAddress("123 Java drive");
@@ -55,10 +57,9 @@ public class BankTest extends ObjInitialize {
 		loanObj.enterSSN("123456778");
 		loanObj.clickNextButton();
 		loanObj.clickConfirm();
-		loanObj.textConfirm();
-		if((loanObj.textConfirm()).contains("Submission Success!")) {
-			System.out.println("verified text");
-		}
+	 //   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		System.out.println(loanObj.textConfirm());
 		
 	}
 	
